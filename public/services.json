@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "FINANCIAL PLANNING",
+        "price": "50000",
+        "description": "I will create a super planning management system for your business so that you can rely and continue your business smoothly.",
+        "img": "https://i.ibb.co/LhW4WFx/advisor1.webp"
+    },
+    {
+        "id": 2,
+        "name": "RISK MANAGEMENT",
+        "price": "45000",
+        "description": "I will create a super risk management system for your business. Today's you know that risk management system is the key part of an institution.",
+        "img": "https://i.ibb.co/Gn9fJ4S/advisor4.jpg"
+    },
+    {
+        "id": 3,
+        "name": "BUDGETARY PLANNING",
+        "price": "40000",
+        "description": "Budgetary system takes your business to the higher level than other. A strong budgetary system may give you a bright future.",
+        "img": "https://i.ibb.co/R3nWYSv/advisor5.jpg"
+    },
+    {
+        "id": 4,
+        "name": "EXPENSE MANAGEMENT",
+        "price": "40000",
+        "description": "Income and expenditure is the main two part of a business. Without expense management you can't give one step ahead. So that I will give you a strong expense management system.",
+        "img": "https://i.ibb.co/8bcTtMh/advisor6.png"
+    }
+]
+
+

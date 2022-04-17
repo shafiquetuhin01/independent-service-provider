@@ -4,8 +4,8 @@ import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-info container">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-info container-fluid fixed-top">
+      <div className="container">
         <Link className="navbar-brand fw-bold" to="/">
           Financial Advisor
         </Link>
@@ -25,6 +25,15 @@ const Header = () => {
             <li className="nav-item">
               <CustomLink className="nav-link" aria-current="page" to={`/home`}>
                 Home
+              </CustomLink>
+            </li>
+            <li className="nav-item">
+              <CustomLink
+                className="nav-link"
+                aria-current="page"
+                to={`/services`}
+              >
+                Services
               </CustomLink>
             </li>
             <li className="nav-item">
