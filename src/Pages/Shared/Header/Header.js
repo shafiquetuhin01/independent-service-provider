@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light container">
+    <nav className="navbar navbar-expand-lg navbar-light bg-info container">
       <div className="container-fluid">
-        <CustomLink className="navbar-brand fw-bold" to="/">
+        <Link className="navbar-brand fw-bold" to="/">
           Financial Advisor
-        </CustomLink>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -42,7 +43,9 @@ const Header = () => {
               </CustomLink>
             </li>
           </ul>
-          <span className="navbar-text btn fw-bold">Login</span>
+          <Link to="login" className="navbar-text text-decoration-none fw-bold">
+            Login
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,11 +1,11 @@
 import React from "react";
 
-const Checkout = () => {
+const Blogs = () => {
   return (
     <div className="container">
-      <h3>This is checkout page</h3>
+      <h3>This is blog page</h3>
     </div>
   );
 };
 
-export default Checkout;
+export default Blogs;
