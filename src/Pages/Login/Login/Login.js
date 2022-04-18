@@ -1,3 +1,4 @@
+import { sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -30,11 +31,17 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const [loginUser, loginloading, loginerror] = useAuthState(auth);
-
+  // input value to form
   const handleFormInput = (event) => {
     userInfo[event.target.name] = event.target.value;
   };
-
+  // email varify
+  const varifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("Email varification sent");
+    });
+  };
+  // for submit button
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -126,9 +133,10 @@ const Login = () => {
         </button>
         <p className="text-danger">{confirmError}</p>
         {createError && <p className="text-danger">{createError.message}</p>}
-        {createUser && (
-          <p className="text-success">Service Created Successfully</p>
-        )}
+        {createUser &&
+          varifyEmail()(
+            <p className="text-success">Service Created Successfully</p>
+          )}
         {user && <p className="text-success">Service Login Successfully</p>}
       </form>
     </div>
