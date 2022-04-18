@@ -33,6 +33,10 @@ function App() {
         <Route path="/checkout" element={<Checkout></Checkout>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route
+          path="/service/:serviceId"
+          element={<ServiceDetails></ServiceDetails>}
+        ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
