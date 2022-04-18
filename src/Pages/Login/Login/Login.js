@@ -49,8 +49,6 @@ const Login = () => {
     } else {
       signInWithEmailAndPassword(userInfo.email, userInfo.password);
     }
-
-    console.log(userInfo);
   };
 
   let navigate = useNavigate();
@@ -116,7 +114,8 @@ const Login = () => {
           />
           {login ? (
             <label className="form-check-label" htmlFor="exampleCheck1">
-              If you are new user please tik in checque box.
+              If you are new user please select the checque box for{" "}
+              <span className="text-primary fw-bold">Sign Up</span>.
             </label>
           ) : (
             <h6>Please Sign Up</h6>

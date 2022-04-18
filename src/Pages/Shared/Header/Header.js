@@ -48,11 +48,14 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <CustomLink className="nav-link" to="about">
-                About
+                About Me
               </CustomLink>
             </li>
           </ul>
-          <Link to="login" className="navbar-text text-decoration-none fw-bold">
+          <Link
+            to="login"
+            className="navbar-text text-decoration-none fw-bold text-primary"
+          >
             Login
           </Link>
         </div>

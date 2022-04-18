@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { id, name, description, img, price } = service;
+  const { id, name, img, description, price } = service || {};
+
   return (
     <div className="col-md-6">
       <div className="card">
