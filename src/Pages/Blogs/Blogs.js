@@ -3,7 +3,7 @@ import React from "react";
 const Blogs = () => {
   return (
     <div className="container" style={{ marginTop: "70px" }}>
-      <h3>This is blog page</h3>
+      <h3 className="text-center text-info">Question and Answering Section</h3>
       <div className="row">
         <div className="col-md-12">
           <div className="card">
