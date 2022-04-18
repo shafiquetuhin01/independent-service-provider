@@ -1,4 +1,4 @@
-import { sendEmailVerification } from "firebase/auth";
+import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -6,7 +6,8 @@ import {
 } from "react-firebase-hooks/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import auth from "../../firebase.init";
+import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithRedirect } from "firebase/auth";
 const Login = () => {
   const [login, setLogin] = useState(true);
 
@@ -18,6 +19,33 @@ const Login = () => {
     confirmPass: "",
   });
 
+  // for signin with github
+  const provider = new GithubAuthProvider();
+  const auth = getAuth();
+  const gitSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GithubAuthProvider.credentialFromError(error);
+        // ...
+      });
+    signInWithRedirect(auth, provider);
+  };
+
   //for creating user
   const [
     createUserWithEmailAndPassword,
@@ -27,7 +55,7 @@ const Login = () => {
   ] = useCreateUserWithEmailAndPassword(auth);
 
   //for using login page
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading, email] =
     useSignInWithEmailAndPassword(auth);
 
   const [loginUser, loginloading, loginerror] = useAuthState(auth);
@@ -39,6 +67,12 @@ const Login = () => {
   const varifyEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
       console.log("Email varification sent");
+    });
+  };
+  // for password reset
+  const handlePassReset = () => {
+    sendPasswordResetEmail(auth, email).then(() => {
+      console.log("email sent");
     });
   };
   // for submit button
@@ -125,11 +159,25 @@ const Login = () => {
               <span className="text-primary fw-bold">Sign Up</span>.
             </label>
           ) : (
-            <h6>Please Sign Up</h6>
+            <div>
+              <h6>Please Sign Up</h6>
+            </div>
           )}
         </div>
         <button type="submit" className="btn btn-primary">
-          {login ? "Login" : "Sign Up"}
+          {login ? (
+            <div>
+              <h6>Login</h6>
+            </div>
+          ) : (
+            "Sign Up"
+          )}
+        </button>
+        <button
+          onClick={handlePassReset}
+          className="btn btn-primary btn-lg p-1 ms-3"
+        >
+          Reset Password
         </button>
         <p className="text-danger">{confirmError}</p>
         {createError && <p className="text-danger">{createError.message}</p>}
@@ -138,6 +186,14 @@ const Login = () => {
             <p className="text-success">Service Created Successfully</p>
           )}
         {user && <p className="text-success">Service Login Successfully</p>}
+        <div className="d-flex justify-content-center mt-5">
+          <button
+            onClick={gitSignIn}
+            className="btn btn-secondary btn-lg text-center"
+          >
+            Signin with github
+          </button>
+        </div>
       </form>
     </div>
   );
