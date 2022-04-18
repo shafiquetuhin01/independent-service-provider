@@ -9,6 +9,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Services from "./Pages/Home/Services/Services";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 import Footer from "./Pages/Shared/Footer/Footer";
+import Service from "./Pages/Home/Service/Service";
+import ServiceDetails from "./Pages/Home/ServiceDetails/ServiceDetails";
+import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -18,6 +21,14 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/services" element={<Services></Services>}></Route>
+        <Route
+          path="/service/:serviceId"
+          element={
+            <RequireAuth>
+              <ServiceDetails></ServiceDetails>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/checkout" element={<Checkout></Checkout>}></Route>
         <Route path="/about" element={<About></About>}></Route>
